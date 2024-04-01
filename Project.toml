@@ -1,0 +1,13 @@
+name = "XYModelwithYao"
+uuid = "671c79e5-c5dd-44e6-889b-7bbab8c96e6b"
+authors = ["nzy1997"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.10"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
