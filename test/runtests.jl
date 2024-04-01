@@ -2,5 +2,5 @@ using XYModelwithYao
 using Test
 
 @testset "XYModelwithYao.jl" begin
-    dis =sim_model()
+    # write your tests here
 end
