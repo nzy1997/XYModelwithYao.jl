@@ -16,3 +16,9 @@ function fermionic_quadratic(model::XYModel)
     A[1:(n+1):end] .= h
     return A
 end
+
+struct DrivedHamiltonian{B1<:AbstractBlock, B2<:AbstractBlock}
+    H0::B1
+    H1::B2
+    frequency::Float64
+end
