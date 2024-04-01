@@ -1,3 +1,10 @@
+# two-level approximation for the model
+# - `ω` frequency of the driving term
+# - `ω0` the excitation energy of the two-level system
+# - `tau` time step
+# - `g` driving strength
+# - `ttotal` total time
+# - `psi` initial state
 function twolevel_evolution(ω::Real,ω0::Real, tau::Real, g::Real,ttotal::Real,psi::Vector{Float64})
     X = [0 1; 1 0]
     Z = [1 0; 0 -1]

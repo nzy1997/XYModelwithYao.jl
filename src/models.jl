@@ -1,12 +1,16 @@
 # required interfaces: nsite
 abstract type AbstractModel end
+
+# XY model
 struct XYModel <: AbstractModel
-    Jxy::Float64
-    h::Float64
-    n::Int
+    Jxy::Float64   # coupling strength
+    h::Float64  # magnetic field strength
+    n::Int  # number of sites
 end
+# get the number of sites
 nsite(m::XYModel) = m.n
 
+# Fermionic quadratic Hamiltonian for solving XY model exactly
 function fermionic_quadratic(model::XYModel)
     n = nsite(model)
     Jxy, h = model.Jxy, model.h
@@ -17,8 +21,11 @@ function fermionic_quadratic(model::XYModel)
     return A
 end
 
+# ```math
+# H = H_0 + H_1 \cos(\omega t)
+# ```
 struct DrivedHamiltonian{B1<:AbstractBlock, B2<:AbstractBlock}
-    H0::B1
-    H1::B2
-    frequency::Float64
+    H0::B1  # static Hamiltonian
+    H1::B2  # driving Hamiltonian
+    frequency::Float64  # frequency of the driving term
 end
