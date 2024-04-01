@@ -7,7 +7,7 @@ function plot_static_line(data;save_name::String)
     xs = [0.1*(i-1) for i in 1:ts]
     fig = Figure()
     # Create an axis with title and labels
-    ax = Axis(fig[1, 1], title = "Momentum Distribution", xlabel = "time", ylabel = "<nk>")
+    ax = Axis(fig[1, 1], title = "Momentum Distribution", xlabel = "time", ylabel = L"\langle n_k\rangle")
     for i in 1:N
         lines!(ax, xs, data[:,i], label = "k=$i")
     end

@@ -4,15 +4,19 @@ function twolevel_evolution(ω::Real,ω0::Real, tau::Real, g::Real,ttotal::Real,
     return hcat([exp(im*tau*i*(Z)/2)*exp(-im*((ω0+ω)*(Z)/2+g*(X))*tau*i)*psi for i in 0:round(Int,ttotal/tau)]...)
 end
 
-
+# simulate the model approximately with two-level system
+# - `n` number of sites
+# - `k` target mode
+# - `Ω` driving strength
+# - `time_stop` total time
 function twolevel_sim_model(;
-    n=10,
-    k=3,
-    Ω = 0.5,
+    n,
+    k,
+    Ω,
+    time_stop,
     Jxy = 1.0,
     h = 1.0,
-    time_step=0.1,
-    time_stop=10.0,
+    time_step = 0.1,
 )
     model = XYModel(Jxy, h, n)
 

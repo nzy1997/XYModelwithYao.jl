@@ -25,15 +25,21 @@ function momentum_an(n::Int,U::Matrix)
     return [sum([U[j,k]'*c[j] for j in 1:n]) for k in 1:n]
 end
 
+# simulate the model with Yao
+# - `n` number of sites
+# - `k` target mode
+# - `Ω` driving strength
+# - `time_stop` total time
 function sim_model(;
-        n=10,
-        k=3,
-        Ω = 0.5,
+        n,
+        k,
+        Ω,
+        time_stop,
         Jxy = 1.0,
         h = 1.0,
         time_step=0.1,
-        time_stop=10,
     )
+    @assert 0 < k <= n "target mode k should be in 1 to $n, got: $k"
 
     reg = product_state(Yao.BitBasis.bit_literal(fill(1, n)...))
     model = XYModel(Jxy, h, n)
