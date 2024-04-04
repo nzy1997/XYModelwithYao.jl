@@ -3,7 +3,7 @@ using XYModelwithYao: XYModel,fermionic_quadratic,drived_xymodel,momentum_an
 using XYModelwithYao.Yao
 using LinearAlgebra
 
-@testset "test" begin
+@testset "momentum_an" begin
     n=2
     Ω = 0.5
     k = 1
