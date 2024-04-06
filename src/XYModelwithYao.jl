@@ -8,6 +8,7 @@ using Makie.Colors
 
 # scatter_center
 using Graphs
+using SimpleWeightedGraphs
 using Enzyme
 using Optim
 
@@ -19,10 +20,10 @@ export twolevel_sim_model
 export plot_static_line, plot_line_model, plot_2line_model
 
 # scatter_center
-export ScatterGraph, abs2_loss, train_loss
+export ScatterGraph, abs2_loss, perm_adjacency, scatter_matrix
 
 # optimization
-export optimize_momentum
+export train_loss, optimize_momentum, optimize_weighted_momentum
 
 include("models.jl")
 include("dynamic.jl")
