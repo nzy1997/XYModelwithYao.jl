@@ -70,8 +70,9 @@ function enlarge_ulist(ulist::Vector{Matrix{ComplexF64}}, maxiter::Int)
 	end
 	return ulist_copy
 end
-function universal_check(ulist::Vector{Matrix{ComplexF64}}, maxiter::Int)
-	ulist_copy = enlarge_ulist(ulist, maxiter)
+
+function universal_check(ulist::Vector{Matrix{ComplexF64}}, enlarge_maxiter::Int)
+	ulist_copy = enlarge_ulist(ulist, enlarge_maxiter)
 	return universal_check(ulist_copy)
 end
 

@@ -1,5 +1,6 @@
 using Test
 using XYModelwithYao
+using LinearAlgebra
 
 @testset "fraction_approximate" begin
     @test fraction_approximate(1/3, 5) ≈ 1/3

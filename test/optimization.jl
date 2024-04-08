@@ -2,6 +2,8 @@ using Test
 using XYModelwithYao
 using XYModelwithYao.Graphs
 using LinearAlgebra
+import Random
+Random.seed!(1234)
 
 @testset "gradient" begin
     g = ScatterGraph(SimpleGraph(Edge.([(1,5), (2,7), (3, 8), (4, 10), (5,6), (5,8), (6,7), (7,10), (8,9), (9, 10)])), [1, 2], [3, 4])
@@ -49,4 +51,8 @@ end
     s=scatter_matrix(g, z, x[2:end])
     @test isapprox(s[1:2,1:2], zeros(2,2), atol=1e-5)
     @test isapprox(s[3:4,3:4], zeros(2,2), atol=1e-5)
+    u1=s[1:2,3:4]
+    u2=s[3:4,1:2]
+    ulist = [u1, u2]
+    @show universal_check(ulist,2)
 end
