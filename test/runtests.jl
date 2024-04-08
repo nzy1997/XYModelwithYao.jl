@@ -12,3 +12,7 @@ end
 @testset "optimization" begin
     include("optimization.jl")
 end
+
+@testset "universal_check" begin
+    include("universal_check.jl")
+end
