@@ -41,7 +41,7 @@ function unitary_decomposition(u::AbstractMatrix)
 	end
 end
 
-function universal_check(ulist::Vector{Matrix{ComplexF64}})
+function universal_check(ulist::Vector{Matrix{ComplexF64}}) #to be modified
 	nmat = [0.0, 0.0, 0.0]
 	for u in ulist
 		expα, θ, nx, ny, nz = unitary_decomposition(u)
