@@ -24,3 +24,16 @@ end
     ulist = [random_unitary(2) for i in 1:2]
     @show universal_check(ulist,2)
 end
+
+@testset "universal_check hardmard T" begin
+    h=ComplexF64.(1/sqrt(2)*[1 1;1 -1])
+    x=ComplexF64.([0 1;1 0])
+    y=ComplexF64.([0 -im;im 0])
+    z=ComplexF64.([1 0;0 -1])
+    T=ComplexF64.([1 0;0 exp(pi/4*im)])
+    ulist = [h,T]
+    @test universal_check(ulist,4)==true
+
+    ulist = [h,x,y,z]
+    @test universal_check(ulist,3)==false
+end

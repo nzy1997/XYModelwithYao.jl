@@ -54,5 +54,5 @@ end
     u1=s[1:2,3:4]
     u2=s[3:4,1:2]
     ulist = [u1, u2]
-    @show universal_check(ulist,2)
+    @show universal_check(ulist,1)
 end
