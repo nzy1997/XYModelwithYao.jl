@@ -1,9 +1,12 @@
 JL = julia
 
-init:
-	$(JL) -e 'using Pkg; dir="."; Pkg.activate(dir); Pkg.instantiate(); Pkg.precompile();'
-	echo 'environment initialized'
+init-%:
+	$(JL) --project="lib/$*" -e 'using Pkg; @assert isdir("lib/$*"); Pkg.develop([Pkg.PackageSpec(path = joinpath("lib", "$*"))]); Pkg.precompile()'
 
-example:
-	echo 'running example at: examples/dosim.jl'
-	$(JL) -e 'using Pkg; dir="."; Pkg.activate(dir); include("examples/dosim.jl");'
+update-%:
+	$(JL) --project="lib/$*" -e 'using Pkg; @assert isdir("lib/$*"); Pkg.update(); Pkg.precompile()'
+
+test-%:
+	$(JL) --project="lib/$*" -e 'using Pkg; @assert isdir("lib/$*"); Pkg.test()'
+
+.PHONY: init-% update-% test-%
